@@ -1,4 +1,4 @@
-Soketi JS
+Soketi.js
 =========
 
 ![CI](https://github.com/soketi/soketi-js/workflows/CI/badge.svg?branch=master)
@@ -8,7 +8,7 @@ Soketi JS
 [![Total Downloads](https://img.shields.io/npm/dt/@soketi/soketi-js)](https://www.npmjs.com/package/@soketi/soketi-js)
 [![License](https://img.shields.io/npm/l/@soketi/soketi-js)](https://www.npmjs.com/package/@soketi/soketi-js)
 
-Laravel Echo extension that works with Soketi, a Laravel-ready WebSockets service.
+Soketi.js is a hard fork of [Laravel Echo](https://github.com/laravel/echo) that works with Soketi, a Laravel-ready WebSockets service.
 
 ## 🤝 Supporting
 
@@ -23,15 +23,30 @@ If you are using your application in your day-to-day job, on presentation demos,
 You can install the package via npm:
 
 ```bash
-npm install @soketi/soketi-js
+npm install --save-dev @soketi/soketi-js socket.io-client
 ```
 
 ## 🙌 Usage
 
-```js
-const package = require('@soketi/soketi-js');
+Soketi.js is a hard fork of [laravel/echo](https://github.com/laravel/echo), meaning that you can use it as a normal Echo client, being fully compatible with all the docs [in the Broadcasting docs](https://laravel.com/docs/8.x/broadcasting).
 
-//
+```js
+import Soketi from '@soketi/soketi-js';
+
+window.io = require('socket.io-client');
+
+window.Soketi = new Soketi({
+    host: window.location.hostname + ':6001/echo-app-key', // "echo-app-key" should be replaced with the App Key
+    authHost: 'http://127.0.0.1:3000',
+    authEndpoint: '/broadcasting/auth',
+    transports: ['websocket'],
+});
+
+// for example
+Soketi.channel('twitter')
+    .listen('.tweet.', e => {
+        console.log({ tweet: e.tweet });
+    });
 ```
 
 ## 🐛 Testing
