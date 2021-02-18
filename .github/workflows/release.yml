@@ -20,6 +20,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        submodules: true
 
     - uses: actions/setup-node@v1
       name: Installing Node.js v14.x
