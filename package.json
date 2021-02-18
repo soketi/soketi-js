@@ -13,8 +13,8 @@
   "author": "Alex Renoki",
   "license": "Apache-2.0",
   "homepage": "https://github.com/soketi/soketi-js.git",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/src/index.js",
+  "module": "dist/src/index.js",
   "engines": {
     "node": ">=10"
   },
@@ -26,7 +26,9 @@
     "test": "jest",
     "test:watch": "npm test -- --watch"
   },
-  "dependencies": {},
+  "dependencies": {
+    "laravel-echo": "^1.10.0"
+  },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/plugin-proposal-export-namespace-from": "^7.8.3",

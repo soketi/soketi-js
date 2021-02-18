@@ -1,0 +1,4 @@
+[submodule "echo"]
+	path = echo
+	url = git@github.com:laravel/echo.git
+	branch = 1.10.0
