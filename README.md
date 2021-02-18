@@ -36,7 +36,9 @@ import Soketi from '@soketi/soketi-js';
 window.io = require('socket.io-client');
 
 window.Soketi = new Soketi({
-    host: window.location.hostname + ':6001/echo-app-key', // "echo-app-key" should be replaced with the App Key
+    host: window.location.hostname,
+    port: 6001,
+    key: 'echo-app-key', // should be replaced with the App Key
     authHost: 'http://127.0.0.1:3000',
     authEndpoint: '/broadcasting/auth',
     transports: ['websocket'],

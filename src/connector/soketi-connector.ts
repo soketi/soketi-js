@@ -18,7 +18,7 @@ export class SoketiConnector extends Connector {
     connect(): void {
         let io = this.getSocketIO();
 
-        this.socket = io(this.options.host, this.options);
+        this.socket = io(this.compileHost(), this.options);
 
         this.socket.on('reconnect', () => {
             Object.values(this.channels).forEach((channel) => {
@@ -122,5 +122,12 @@ export class SoketiConnector extends Connector {
      */
     disconnect(): void {
         this.socket.disconnect();
+    }
+
+    /**
+     * Compile the host name for the connection.
+     */
+    protected compileHost(): string {
+        return this.options.host + ':' + this.options.port + '/' + this.options.key;
     }
 }

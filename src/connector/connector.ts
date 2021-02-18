@@ -12,6 +12,7 @@ export abstract class Connector {
         authEndpoint: '/broadcasting/auth',
         csrfToken: null,
         host: null,
+        port: 6001,
         key: null,
         namespace: 'App.Events',
     };
