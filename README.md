@@ -23,7 +23,7 @@ If you are using your application in your day-to-day job, on presentation demos,
 You can install the package via npm:
 
 ```bash
-npm install --save-dev @soketi/soketi-js socket.io-client
+npm install --save-dev @soketi/soketi-js
 ```
 
 ## 🙌 Usage
@@ -46,7 +46,7 @@ window.Soketi = new Soketi({
 
 // for example
 Soketi.channel('twitter')
-    .listen('.tweet.', e => {
+    .listen('.tweet', e => {
         console.log({ tweet: e.tweet });
     });
 ```
