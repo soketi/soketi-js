@@ -128,6 +128,8 @@ export class SoketiConnector extends Connector {
      * Compile the host name for the connection.
      */
     protected compileHost(): string {
-        return this.options.host + ':' + this.options.port + '/' + this.options.key;
+        return this.options.host
+            ? this.options.host + ':' + this.options.port + '/' + this.options.key
+            : `${this.options.cluster}-ws.soketi.app` + ':' + this.options.port + '/' + this.options.key;
     }
 }

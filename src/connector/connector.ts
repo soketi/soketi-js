@@ -14,6 +14,7 @@ export abstract class Connector {
         host: null,
         port: 6001,
         key: null,
+        cluster: 'ws',
         namespace: 'App.Events',
     };
 
