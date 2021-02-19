@@ -23,7 +23,7 @@ If you are using your application in your day-to-day job, on presentation demos,
 You can install the package via npm:
 
 ```bash
-npm install --save-dev @soketi/soketi-js socket.io-client
+npm install --save-dev @soketi/soketi-js
 ```
 
 ## 🙌 Usage
@@ -39,14 +39,14 @@ window.Soketi = new Soketi({
     host: window.location.hostname,
     port: 6001,
     key: 'echo-app-key', // should be replaced with the App Key
-    authHost: 'http://127.0.0.1:3000',
+    authHost: 'http://127.0.0.1',
     authEndpoint: '/broadcasting/auth',
     transports: ['websocket'],
 });
 
 // for example
 Soketi.channel('twitter')
-    .listen('.tweet.', e => {
+    .listen('.tweet', e => {
         console.log({ tweet: e.tweet });
     });
 ```
