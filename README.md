@@ -2,8 +2,6 @@ Soketi.js
 =========
 
 ![CI](https://github.com/soketi/soketi-js/workflows/CI/badge.svg?branch=master)
-[![codecov](https://codecov.io/gh/soketi/soketi-js/branch/master/graph/badge.svg)](https://codecov.io/gh/soketi/soketi-js/branch/master)
-[![StyleCI](https://github.styleci.io/repos/~styleci_code~/shield?branch=master)](https://github.styleci.io/repos/~styleci_code~)
 [![Latest Stable Version](https://img.shields.io/github/v/release/soketi/soketi-js)](https://www.npmjs.com/package/@soketi/soketi-js)
 [![Total Downloads](https://img.shields.io/npm/dt/@soketi/soketi-js)](https://www.npmjs.com/package/@soketi/soketi-js)
 [![License](https://img.shields.io/npm/l/@soketi/soketi-js)](https://www.npmjs.com/package/@soketi/soketi-js)
