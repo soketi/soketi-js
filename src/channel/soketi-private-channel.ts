@@ -33,34 +33,46 @@ export class SoketiPrivateChannel extends SoketiChannel {
      */
     protected authenticate(): Promise<any> {
         return new Promise((resolve, reject) => {
-            let xhr = new XMLHttpRequest();
+            if (this.options.authorizer) {
+                let authorizer = this.options.authorizer(this, this.options);
 
-            xhr.open('POST', this.options.authHost + this.options.authEndpoint);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.withCredentials = true;
-
-            for (let header in this.options.auth.headers) {
-                xhr.setRequestHeader(header, this.options.auth.headers[header]);
-            }
-
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        try {
-                            resolve(JSON.parse(xhr.responseText || '{}'));
-                        } catch (e) {
-                            reject(e);
-                        }
+                return authorizer.authorize(this.socket.id, function (error, data) {
+                    if (error) {
+                        reject(error);
                     } else {
-                        reject({ message: 'The authentication failed with non-200.' });
+                        resolve(data);
                     }
-                }
-            };
+                });
+            } else {
+                let xhr = new XMLHttpRequest();
 
-            xhr.send(JSON.stringify({
-                channel_name: this.name,
-                socket_id: this.socket.id,
-            }));
+                xhr.open('POST', this.options.authHost + this.options.authEndpoint);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.withCredentials = true;
+
+                for (let header in this.options.auth.headers) {
+                    xhr.setRequestHeader(header, this.options.auth.headers[header]);
+                }
+
+                xhr.onreadystatechange = () => {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            try {
+                                resolve(JSON.parse(xhr.responseText || '{}'));
+                            } catch (e) {
+                                reject(e);
+                            }
+                        } else {
+                            reject({ message: 'The authentication failed with non-200.' });
+                        }
+                    }
+                };
+
+                xhr.send(JSON.stringify({
+                    channel_name: this.name,
+                    socket_id: this.socket.id,
+                }));
+            }
         });
     }
 }

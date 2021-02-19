@@ -37,7 +37,6 @@ window.io = require('socket.io-client');
 
 window.Soketi = new Soketi({
     host: window.location.hostname,
-    port: 6001,
     key: 'echo-app-key', // should be replaced with the App Key
     authHost: 'http://127.0.0.1',
     authEndpoint: '/broadcasting/auth',
@@ -49,6 +48,35 @@ Soketi.channel('twitter')
     .listen('.tweet', e => {
         console.log({ tweet: e.tweet });
     });
+```
+
+## Authorizing Sanctum
+
+The package has full compatibility with the Pusher.js connector, meaning that you can [specify the `authorizer` for the request](https://laravel.com/docs/8.x/sanctum#authorizing-private-broadcast-channels):
+
+```js
+window.Soketi = new Soketi({
+    host: window.location.hostname,
+    key: 'echo-app-key',
+    encrypted: true,
+    key: process.env.MIX_PUSHER_APP_KEY,
+    authorizer: (channel, options) => {
+        return {
+            authorize: (socketId, callback) => {
+                axios.post('/api/broadcasting/auth', {
+                    socket_id: socketId,
+                    channel_name: channel.name,
+                })
+                .then(response => {
+                    callback(false, response.data);
+                })
+                .catch(error => {
+                    callback(true, error);
+                });
+            },
+        };
+    },
+});
 ```
 
 ## 🐛 Testing
