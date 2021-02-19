@@ -57,7 +57,6 @@ window.Soketi = new Soketi({
     host: window.location.hostname,
     key: 'echo-app-key',
     encrypted: true,
-    key: process.env.MIX_PUSHER_APP_KEY,
     authorizer: (channel, options) => {
         return {
             authorize: (socketId, callback) => {
