@@ -46,7 +46,6 @@ export class SoketiPrivateChannel extends SoketiChannel {
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
-                        console.log({ xhr });
                         try {
                             resolve(JSON.parse(xhr.responseText || '{}'));
                         } catch (e) {
