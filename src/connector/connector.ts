@@ -17,6 +17,7 @@ export abstract class Connector {
         cluster: 'ws',
         authorizer: null,
         namespace: 'App.Events',
+        transports: ['websocket'],
     };
 
     /**

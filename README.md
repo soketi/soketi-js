@@ -38,7 +38,6 @@ window.Soketi = new Soketi({
     key: 'echo-app-key', // should be replaced with the App Key
     authHost: 'http://127.0.0.1',
     authEndpoint: '/broadcasting/auth',
-    transports: ['websocket'],
 });
 
 // for example
@@ -57,7 +56,6 @@ window.Soketi = new Soketi({
     host: window.location.hostname,
     key: 'echo-app-key',
     encrypted: true,
-    transports: ['websocket'],
     authorizer: (channel, options) => {
         return {
             authorize: (socketId, callback) => {
