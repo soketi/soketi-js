@@ -31,8 +31,6 @@ Soketi.js is a hard fork of [laravel/echo](https://github.com/laravel/echo), mea
 ```js
 import Soketi from '@soketi/soketi-js';
 
-window.io = require('socket.io-client');
-
 window.Soketi = new Soketi({
     host: window.location.hostname,
     key: 'echo-app-key', // should be replaced with the App Key
@@ -41,10 +39,9 @@ window.Soketi = new Soketi({
 });
 
 // for example
-Soketi.channel('twitter')
-    .listen('.tweet', e => {
-        console.log({ tweet: e.tweet });
-    });
+Soketi.channel('twitter').listen('.tweet', e => {
+    console.log({ tweet: e.tweet });
+});
 ```
 
 ## Authorizing Sanctum

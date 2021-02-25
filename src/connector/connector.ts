@@ -1,5 +1,7 @@
 import { SoketiChannel, SoketiPresenceChannel } from './../channel';
 
+const io = require('socket.io-client');
+
 export abstract class Connector {
     /**
      * Default connector options.
@@ -18,6 +20,7 @@ export abstract class Connector {
         authorizer: null,
         namespace: 'App.Events',
         transports: ['websocket'],
+        client: io,
     };
 
     /**
