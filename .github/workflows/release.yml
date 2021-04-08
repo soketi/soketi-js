@@ -23,7 +23,7 @@ jobs:
       with:
         submodules: true
 
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v2.1.5
       name: Installing Node.js v14.x
       with:
         node-version: 14.x
