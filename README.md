@@ -106,6 +106,14 @@ The key is also needed in your backend broadcasting client. For Laravel, in `bro
 ],
 ```
 
+You then are free to use the encrypted private channels:
+
+```js
+Soketi.encryptedPrivate('top-secret').listen('.new-documents', e => {
+    //
+});
+```
+
 ## Catching any event
 
 You can catch any event using `.onAny()`:
