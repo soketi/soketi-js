@@ -1,6 +1,5 @@
 import { decode as encodeUTF8 } from '@stablelib/utf8';
 import { decode as decodeBase64 } from '@stablelib/base64';
-
 import { SoketiPrivateChannel } from './soketi-private-channel';
 
 const nacl = require('tweetnacl');
