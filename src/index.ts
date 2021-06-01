@@ -15,4 +15,11 @@ export default class Soketi extends Echo {
     onAny(callback: Function): SoketiConnector {
         return this.connector.onAny(callback);
     }
+
+    /**
+     * Register a callback to catch errors.
+     */
+    error(callback: Function): SoketiConnector {
+        return this.connector.error(callback);
+    }
 }

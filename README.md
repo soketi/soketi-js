@@ -82,6 +82,16 @@ Soketi.onAny((event, ...args) => {
 });
 ```
 
+## Catching errors
+
+Sometimes the connection might throw errors:
+
+```js
+Soketi.error(({ message, code }) => {
+    //
+});
+```
+
 ## 🐛 Testing
 
 ``` bash

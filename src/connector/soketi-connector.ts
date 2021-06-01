@@ -122,6 +122,15 @@ export class SoketiConnector extends Connector {
     }
 
     /**
+     * Register a callback to be called on any event.
+     */
+    error(callback: Function): SoketiConnector {
+        this.socket.on('socket:error', callback);
+
+        return this;
+    }
+
+    /**
      * Get the socket ID for the connection.
      */
     socketId(): string {
