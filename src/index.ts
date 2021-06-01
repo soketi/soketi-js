@@ -8,4 +8,11 @@ export default class Soketi extends Echo {
     connect(): void {
         this.connector = new SoketiConnector(this.options);
     }
+
+    /**
+     * Register a callback to be called on any event.
+     */
+    onAny(callback: Function): SoketiConnector {
+        return this.connector.onAny(callback);
+    }
 }

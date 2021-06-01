@@ -72,6 +72,16 @@ window.Soketi = new Soketi({
 });
 ```
 
+## Catching any event
+
+You can catch any event using `.onAny()`:
+
+```js
+Soketi.onAny((event, ...args) => {
+    //
+});
+```
+
 ## 🐛 Testing
 
 ``` bash
