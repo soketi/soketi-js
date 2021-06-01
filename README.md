@@ -72,6 +72,26 @@ window.Soketi = new Soketi({
 });
 ```
 
+## Catching any event
+
+You can catch any event using `.onAny()`:
+
+```js
+Soketi.onAny((event, ...args) => {
+    //
+});
+```
+
+## Catching errors
+
+Sometimes the connection might throw errors:
+
+```js
+Soketi.error(({ message, code }) => {
+    //
+});
+```
+
 ## 🐛 Testing
 
 ``` bash
