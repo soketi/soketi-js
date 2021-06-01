@@ -41,6 +41,11 @@ export class SoketiEncryptedPrivateChannel extends SoketiPrivateChannel {
      * Decrypt the given event data.
      */
     protected decrypt(event: any) {
+        // TODO: For now, whispering is not supported for end-to-end encryption.
+        if (! event.ciphertext || ! event.nonce) {
+            return event;
+        }
+
         let cipherText = decodeBase64(event.ciphertext);
         let nonce = decodeBase64(event.nonce);
         let key = decodeBase64(this.sharedSecret);
