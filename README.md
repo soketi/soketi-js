@@ -74,6 +74,8 @@ window.Soketi = new Soketi({
 
 ## Encrypted Private Channels
 
+**This feature works with [Echo Server 5.4.0](https://github.com/soketi/echo-server) and beyond.**
+
 [Encrypted Private Channels](https://pusher.com/docs/channels/using_channels/encrypted-channels) are Pusher-like features, but they come integrated with this package and you are free to leverage them.
 
 Below you will find an example:
