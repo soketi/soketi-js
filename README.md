@@ -72,6 +72,40 @@ window.Soketi = new Soketi({
 });
 ```
 
+## Encrypted Private Channels
+
+[Encrypted Private Channels](https://pusher.com/docs/channels/using_channels/encrypted-channels) are Pusher-like features, but they come integrated with this package and you are free to leverage them.
+
+Below you will find an example:
+
+```js
+window.Soketi = new Soketi({
+    host: window.location.hostname,
+    key: 'echo-app-key',
+    encrypted: true,
+    encryptionMasterKeyBase64: 'vwTqW/UBENYBOySubUo8fldlMFvCzOY8BFO5xAgnOus=',
+});
+```
+
+According to the Pusher docs, the key was generated using OpenSSL:
+
+```bash
+$ openssl rand -base64 32
+```
+
+The key is also needed in your backend broadcasting client. For Laravel, in `broadcasting.php`:
+
+```php
+'socketio' => [
+    'driver' => 'pusher',
+    ...
+    'options' => [
+        ...
+        'encryption_master_key_base64' => 'vwTqW/UBENYBOySubUo8fldlMFvCzOY8BFO5xAgnOus=',
+    ],
+],
+```
+
 ## Catching any event
 
 You can catch any event using `.onAny()`:

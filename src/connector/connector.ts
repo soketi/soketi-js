@@ -21,6 +21,7 @@ export abstract class Connector {
         namespace: 'App.Events',
         transports: ['websocket'],
         client: io,
+        encryptionMasterKeyBase64: '',
     };
 
     /**

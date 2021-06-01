@@ -1,5 +1,10 @@
 import { Connector } from './connector';
-import { SoketiChannel, SoketiPrivateChannel, SoketiPresenceChannel } from '../channel';
+import {
+    SoketiChannel,
+    SoketiEncryptedPrivateChannel,
+    SoketiPrivateChannel,
+    SoketiPresenceChannel,
+} from '../channel';
 
 export class SoketiConnector extends Connector {
     /**
@@ -71,6 +76,21 @@ export class SoketiConnector extends Connector {
         }
 
         return this.channels['private-' + name] as SoketiPrivateChannel;
+    }
+
+    /**
+     * Get a private encrypted channel instance by name.
+     */
+    encryptedPrivateChannel(name: string): SoketiEncryptedPrivateChannel {
+        if (!this.channels['private-encrypted-' + name]) {
+            this.channels['private-encrypted-' + name] = new SoketiEncryptedPrivateChannel(
+                this.socket,
+                'private-encrypted-' + name,
+                this.options,
+            );
+        }
+
+        return this.channels['private-encrypted-' + name] as SoketiEncryptedPrivateChannel;
     }
 
     /**
