@@ -52,7 +52,6 @@ The package has full compatibility with the Pusher.js connector, meaning that yo
 window.Soketi = new Soketi({
     host: window.location.hostname,
     key: 'echo-app-key',
-    encrypted: true,
     authorizer: (channel, options) => {
         return {
             authorize: (socketId, callback) => {
@@ -84,7 +83,6 @@ Below you will find an example:
 window.Soketi = new Soketi({
     host: window.location.hostname,
     key: 'echo-app-key',
-    encrypted: true,
     encryptionMasterKeyBase64: 'vwTqW/UBENYBOySubUo8fldlMFvCzOY8BFO5xAgnOus=',
 });
 ```
