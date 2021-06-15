@@ -43,6 +43,10 @@ export class SoketiChannel extends Channel {
         this.options = options;
         this.eventFormatter = new EventFormatter(this.options.namespace);
 
+        if(this.socket.connected) {
+            this.subscribe();
+        }
+
         this.socket.on('connect', socket => this.subscribe());
     }
 
